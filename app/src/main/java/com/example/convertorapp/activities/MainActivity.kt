@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.convertorapp.R
 import com.example.convertorapp.data.CardRVAdapter
-import com.example.convertorapp.data.CardRVModal
 import com.example.convertorapp.data.initCardList
 
 class MainActivity : AppCompatActivity() {
@@ -31,8 +30,10 @@ class MainActivity : AppCompatActivity() {
 
         //Initialize Recycler View's Adapter and set it up to Recycler View
         //Clicking a card will navigate and start the CalculateActivity
-        val cardRVAdapter = CardRVAdapter(cardList, this) { _ ->
+        val cardRVAdapter = CardRVAdapter(cardList, this) { _, cardTitle ->
             val intent = Intent(this, CalculateActivity::class.java)
+            //Send the specific card title to the CalculateActivity
+            intent.putExtra("cardTitle", cardTitle)
             startActivity(intent)
         }
         cardRV.adapter = cardRVAdapter

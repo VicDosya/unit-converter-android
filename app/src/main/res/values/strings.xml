@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">Convertor App</string>
-    <string name="app_title">Convertor</string>
+    <string name="app_name">Converter App</string>
+    <string name="app_title">Converter</string>
     <string name="input_number_label_hint">Enter number</string>
     <string name="choose_unit">Choose Unit</string>
     <string name="convert_button_text">CONVERT</string>
+    <string name="scroll_view_title">Conversion data:</string>
 
 </resources>

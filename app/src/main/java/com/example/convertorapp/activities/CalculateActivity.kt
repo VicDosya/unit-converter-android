@@ -9,6 +9,7 @@ import android.widget.AutoCompleteTextView
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.convertorapp.R
+import com.example.convertorapp.data.getDropdownItems
 import com.google.android.material.textfield.TextInputLayout
 
 
@@ -20,6 +21,12 @@ class CalculateActivity : AppCompatActivity() {
 
         //Enable the Up button in the Action Bar
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        //Get all extras from all the Activities
+        val selectedCard = intent.getStringExtra("cardTitle")
+
+        //Assign cardTitle to the Action Bar title (if it exists)
+        supportActionBar?.title = selectedCard
 
         //Remove all inputs focus when clicked aside from the input fields
         val calculateLayout = findViewById<RelativeLayout>(R.id.calculate_layout)
@@ -33,9 +40,11 @@ class CalculateActivity : AppCompatActivity() {
 
         //Drop down unit options
         val optionsField = findViewById<TextInputLayout>(R.id.ti_options_field)
-        val unitsList = listOf<String>("Material", "Design", "Components", "Android")
-        val adapter = ArrayAdapter(this, R.layout.dropdown_unit, unitsList)
-        (optionsField.editText as? AutoCompleteTextView)?.setAdapter(adapter)
+        if (selectedCard != null) {
+            val unitsList = getDropdownItems(selectedCard)
+            val adapter = ArrayAdapter(this, R.layout.dropdown_unit, unitsList)
+            (optionsField.editText as? AutoCompleteTextView)?.setAdapter(adapter)
+        }
 
     }
 

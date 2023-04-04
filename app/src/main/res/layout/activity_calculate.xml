@@ -66,6 +66,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- Conversion data title -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/scroll_view_title"
+                android:layout_marginHorizontal="15dp"
+                />
             <!-- Unit conversion data goes here (dynamically in CalculateActivity) -->
 
         </LinearLayout>
@@ -76,10 +83,12 @@
     <Button
         android:id="@+id/convert_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginHorizontal="50dp"
-        android:text="@string/convert_button_text" />
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/convert_button_text"
+        android:textSize="20sp" />
 
 
 </RelativeLayout>
