@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/calculate_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context=".activities.CalculateActivity">
+
+    <!-- Number input field-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_number_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:paddingTop="20dp"
+        app:endIconMode="clear_text"
+        app:startIconDrawable="@drawable/ic_number_field">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_number_label_hint"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal"
+            android:maxLength="15"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Options to choose layout -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_options_field"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ti_number_input"
+        android:layout_marginHorizontal="15dp"
+        android:paddingTop="20dp"
+        app:startIconDrawable="@drawable/ic_unit_list">
+
+        <AutoCompleteTextView
+            android:id="@+id/tv_auto_complete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/choose_unit"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Conversion data views -->
+    <ScrollView
+        android:id="@+id/unit_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/convert_button"
+        android:layout_below="@id/ti_options_field"
+        android:layout_marginVertical="20dp">
+
+        <LinearLayout
+            android:id="@+id/unit_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Unit conversion data goes here (dynamically in CalculateActivity) -->
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Convert Button -->
+    <Button
+        android:id="@+id/convert_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="50dp"
+        android:text="@string/convert_button_text" />
+
+
+</RelativeLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="4dp">
+
+    <!-- Linear layout for grid view item -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Image View inside the card-->
+        <ImageView
+            android:id="@+id/iv_card_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:padding="5dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <!-- Text View inside the card-->
+        <TextView
+            android:id="@+id/tv_card_title"
+            style="@style/card_title_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:padding="4dp"
+            tools:ignore="RtlCompat"
+            tools:text="Card Text" />
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
