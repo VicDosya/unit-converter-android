@@ -2,15 +2,18 @@ package com.example.convertorapp.activities
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.util.TypedValue
 import android.view.MenuItem
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.convertorapp.R
 import com.example.convertorapp.data.*
 import com.google.android.material.textfield.TextInputEditText
@@ -204,6 +207,12 @@ class CalculateActivity : AppCompatActivity() {
     private fun addTextViews(linearLayout: LinearLayout, unit: String, unitValue: Double?) {
         val textView = TextView(this)
         textView.text = getString(R.string.unit_value_template, unit, unitValue)
+        //Text styling
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f)
+        textView.setTypeface(null,Typeface.BOLD)
+        textView.setTextColor(ContextCompat.getColor(this,android.R.color.black))
+        textView.setLineSpacing(16f, 2f)
+        //Add text view to the linearLayout
         linearLayout.addView(textView)
     }
 

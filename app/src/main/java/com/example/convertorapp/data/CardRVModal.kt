@@ -11,14 +11,14 @@ data class CardRVModal(
 //Initialize card list data function (Function is used in MainActivity)
 fun initCardList(): ArrayList<CardRVModal> {
     val cardList = ArrayList<CardRVModal>()
-    cardList.add(CardRVModal("Length", R.drawable.ic_launcher_background))
-    cardList.add(CardRVModal("Area", R.drawable.ic_launcher_background))
-    cardList.add(CardRVModal("Volume", R.drawable.ic_launcher_background))
-    cardList.add(CardRVModal("Mass", R.drawable.ic_launcher_background))
-    cardList.add(CardRVModal("Weight", R.drawable.ic_launcher_background))
-    cardList.add(CardRVModal("Time", R.drawable.ic_launcher_background))
-    cardList.add(CardRVModal("Electric current", R.drawable.ic_launcher_background))
-    cardList.add(CardRVModal("Temperature", R.drawable.ic_launcher_background))
+    cardList.add(CardRVModal("Length", R.drawable.ic_length_card))
+    cardList.add(CardRVModal("Area", R.drawable.ic_area_card))
+    cardList.add(CardRVModal("Volume", R.drawable.ic_volume_card))
+    cardList.add(CardRVModal("Mass", R.drawable.ic_mass_card))
+    cardList.add(CardRVModal("Weight", R.drawable.ic_weight_card))
+    cardList.add(CardRVModal("Time", R.drawable.ic_time_card))
+    cardList.add(CardRVModal("Electric current", R.drawable.ic_electriccurrent_card))
+    cardList.add(CardRVModal("Temperature", R.drawable.ic_temperature_card))
     return cardList
 }
 
