@@ -14,7 +14,7 @@ class CardRVAdapter(
     //Passing variables as card list, context and click listener
     private val cardList: ArrayList<CardRVModal>,
     private val context: Context,
-    private val clickListener: (position: Int) -> Unit
+    private val clickListener: (position: Int, cardTitle: String) -> Unit
 ) : RecyclerView.Adapter<CardRVAdapter.CardViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -34,7 +34,7 @@ class CardRVAdapter(
         //Set up the click listener
         holder.cardTitle.text = cardList[position].cardTitle
         holder.cardImage.setImageResource(cardList[position].CardImg)
-        holder.itemView.setOnClickListener { clickListener(position) }
+        holder.itemView.setOnClickListener { clickListener(position, cardList[position].cardTitle) }
 
     }
 
