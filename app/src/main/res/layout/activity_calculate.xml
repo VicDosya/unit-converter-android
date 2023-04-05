@@ -21,6 +21,7 @@
         app:startIconDrawable="@drawable/ic_number_field">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_number_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/input_number_label_hint"
@@ -52,27 +53,33 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Conversion data views -->
+
+    <!-- Conversion data title -->
+    <TextView
+        android:id="@+id/conversion_data_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/scroll_view_title"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/ti_options_field"
+        />
+
     <ScrollView
         android:id="@+id/unit_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/convert_button"
-        android:layout_below="@id/ti_options_field"
-        android:layout_marginVertical="20dp">
+        android:layout_below="@id/conversion_data_title"
+        android:layout_marginBottom="20dp">
 
         <LinearLayout
             android:id="@+id/unit_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginHorizontal="15dp">
 
-            <!-- Conversion data title -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/scroll_view_title"
-                android:layout_marginHorizontal="15dp"
-                />
             <!-- Unit conversion data goes here (dynamically in CalculateActivity) -->
 
         </LinearLayout>
@@ -88,7 +95,8 @@
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="10dp"
         android:text="@string/convert_button_text"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        app:backgroundTint="@color/bright_green" />
 
 
 </RelativeLayout>
