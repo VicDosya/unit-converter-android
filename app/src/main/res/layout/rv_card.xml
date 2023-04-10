@@ -23,6 +23,7 @@
             android:layout_height="80dp"
             android:layout_gravity="center"
             android:layout_margin="8dp"
+            android:importantForAccessibility="no"
             android:padding="5dp"
             tools:srcCompat="@tools:sample/avatars" />
 

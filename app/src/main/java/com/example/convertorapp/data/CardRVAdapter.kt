@@ -1,6 +1,5 @@
 package com.example.convertorapp.data
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,13 +12,12 @@ import com.example.convertorapp.R
 class CardRVAdapter(
     //Passing variables as card list, context and click listener
     private val cardList: ArrayList<CardRVModal>,
-    private val context: Context,
     private val clickListener: (position: Int, cardTitle: String) -> Unit
 ) : RecyclerView.Adapter<CardRVAdapter.CardViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): CardRVAdapter.CardViewHolder {
+    ): CardViewHolder {
         //This method is used to inflate the layout file
         //Which is created for the recycler view
         val itemView = LayoutInflater.from(parent.context).inflate(
@@ -29,7 +27,7 @@ class CardRVAdapter(
         return CardViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: CardRVAdapter.CardViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         //Set up the data to the card TextView and card ImageView
         //Set up the click listener
         holder.cardTitle.text = cardList[position].cardTitle

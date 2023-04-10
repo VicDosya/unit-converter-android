@@ -1,8 +1,12 @@
 package com.example.convertorapp.activities
 
 import android.content.Intent
+import android.content.res.Configuration
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.SpannableString
+import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.convertorapp.R
@@ -18,6 +22,16 @@ class MainActivity : AppCompatActivity() {
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
+        //Get app title view
+        val appTitle = findViewById<TextView>(R.id.tv_heading_text)
+
+        //Check for dark mode, set view styles accordingly
+        val isDarkMode = (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
+        if(isDarkMode){
+            appTitle.setTextColor(Color.WHITE)
+        } else {
+            appTitle.setTextColor(Color.BLACK)
+        }
 
         //Initialize Recycler View with its ID
         val cardRV = findViewById<RecyclerView>(R.id.rv_cards_list)
@@ -30,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         //Initialize Recycler View's Adapter and set it up to Recycler View
         //Clicking a card will navigate and start the CalculateActivity
-        val cardRVAdapter = CardRVAdapter(cardList, this) { _, cardTitle ->
+        val cardRVAdapter = CardRVAdapter(cardList) { _, cardTitle ->
             val intent = Intent(this, CalculateActivity::class.java)
             //Send the specific card title to the CalculateActivity
             intent.putExtra("cardTitle", cardTitle)
