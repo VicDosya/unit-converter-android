@@ -71,14 +71,15 @@
         android:layout_height="match_parent"
         android:layout_above="@id/convert_button"
         android:layout_below="@id/conversion_data_title"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="20dp"
+        android:contentDescription="@string/scroll_view_title">
 
         <LinearLayout
             android:id="@+id/unit_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginHorizontal="15dp">
+            android:layout_marginHorizontal="15dp"
+            android:orientation="vertical">
 
             <!-- Unit conversion data goes here (dynamically in CalculateActivity) -->
 

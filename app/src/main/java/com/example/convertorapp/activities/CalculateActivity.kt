@@ -1,21 +1,26 @@
 package com.example.convertorapp.activities
 
 import android.content.Context
+import android.content.res.Configuration
 import android.graphics.Color
+import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.util.TypedValue
 import android.view.MenuItem
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import com.example.convertorapp.R
 import com.example.convertorapp.data.*
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-
 
 class CalculateActivity : AppCompatActivity() {
 
@@ -202,9 +207,28 @@ class CalculateActivity : AppCompatActivity() {
 
     //Function to add new TextViews in the LinearLayout
     private fun addTextViews(linearLayout: LinearLayout, unit: String, unitValue: Double?) {
-        val textView = TextView(this)
-        textView.text = getString(R.string.unit_value_template, unit, unitValue)
-        linearLayout.addView(textView)
+        val unitTextView = TextView(this)
+        val unitValueTextView = TextView(this)
+
+        //Set the unit styling
+        unitTextView.text = unit
+        unitTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
+        unitTextView.setTypeface(null, Typeface.NORMAL)
+        linearLayout.addView(unitTextView)
+
+        //Set the unit value styling
+        unitValueTextView.text = unitValue?.toString()
+        unitValueTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
+        unitValueTextView.setTypeface(null, Typeface.BOLD)
+        unitValueTextView.setTextColor(ContextCompat.getColor(this, R.color.conversion_text_color))
+        unitTextView.setPadding(0, 10, 0, 20)
+        linearLayout.addView(unitValueTextView)
+
+        //Break line between each unit and unit value
+        val lineView = View(this)
+        lineView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 3)
+        lineView.setBackgroundColor(ContextCompat.getColor(this, R.color.breakline_color))
+        linearLayout.addView(lineView)
     }
 
     //Assign cardTitle to the Action Bar title (if it exists)
@@ -212,19 +236,34 @@ class CalculateActivity : AppCompatActivity() {
     //Include back arrow button
     private fun setToolBar(selectedCard: String?) {
         //Enable the Up button in the Action Bar
+        val spannableString = SpannableString(selectedCard)
         supportActionBar?.apply {
-            setBackgroundDrawable(ColorDrawable(Color.WHITE))
-            setHomeAsUpIndicator(com.google.android.material.R.drawable.ic_arrow_back_black_24)
+            //If user is in dark mode, set its toolbar background, icon and title to black
+            val isDarkMode =
+                (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
+            if (isDarkMode) {
+                setBackgroundDrawable(ColorDrawable(Color.BLACK))
+                setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24)
+                //set title styling
+                spannableString.setSpan(
+                    ForegroundColorSpan(Color.WHITE),
+                    0,
+                    selectedCard!!.length,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+            } else {
+                setBackgroundDrawable(ColorDrawable(Color.WHITE))
+                setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24)
+                //set title styling
+                spannableString.setSpan(
+                    ForegroundColorSpan(Color.BLACK),
+                    0,
+                    selectedCard!!.length,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+            }
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
-
-        val spannableString = SpannableString(selectedCard)
-        spannableString.setSpan(
-            ForegroundColorSpan(Color.BLACK),
-            0,
-            selectedCard!!.length,
-            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
         supportActionBar?.setDisplayShowTitleEnabled(true)
         supportActionBar?.title = spannableString
     }

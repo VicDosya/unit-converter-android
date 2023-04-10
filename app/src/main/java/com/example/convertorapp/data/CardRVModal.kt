@@ -11,14 +11,14 @@ data class CardRVModal(
 //Initialize card list data function (Function is used in MainActivity)
 fun initCardList(): ArrayList<CardRVModal> {
     val cardList = ArrayList<CardRVModal>()
-    cardList.add(CardRVModal("Length", R.drawable.ic_launcher_background))
-    cardList.add(CardRVModal("Area", R.drawable.ic_launcher_background))
-    cardList.add(CardRVModal("Volume", R.drawable.ic_launcher_background))
-    cardList.add(CardRVModal("Mass", R.drawable.ic_launcher_background))
-    cardList.add(CardRVModal("Weight", R.drawable.ic_launcher_background))
-    cardList.add(CardRVModal("Time", R.drawable.ic_launcher_background))
-    cardList.add(CardRVModal("Electric current", R.drawable.ic_launcher_background))
-    cardList.add(CardRVModal("Temperature", R.drawable.ic_launcher_background))
+    cardList.add(CardRVModal("Length", R.drawable.ic_length_card))
+    cardList.add(CardRVModal("Area", R.drawable.ic_area_card))
+    cardList.add(CardRVModal("Volume", R.drawable.ic_volume_card))
+    cardList.add(CardRVModal("Mass", R.drawable.ic_mass_card))
+    cardList.add(CardRVModal("Weight", R.drawable.ic_weight_card))
+    cardList.add(CardRVModal("Time", R.drawable.ic_time_card))
+    cardList.add(CardRVModal("Electric current", R.drawable.ic_electriccurrent_card))
+    cardList.add(CardRVModal("Temperature", R.drawable.ic_temperature_card))
     return cardList
 }
 
@@ -46,6 +46,7 @@ data class LengthConversionValues(
     val inch: Double,
     val foot: Double,
 )
+
 //LENGTH CONVERSION FORMULA
 val LengthConversionMap = mapOf(
     "Meter" to LengthConversionValues(1.0, 100.0, 39.37, 3.28),
@@ -61,6 +62,7 @@ data class AreaConversionValues(
     val sqrInch: Double,
     val sqrFoot: Double,
 )
+
 //AREA CONVERSION FORMULA
 val AreaConversionMap = mapOf(
     "Square Meter" to AreaConversionValues(1.0, 10000.0, 1550.0031, 10.7639),
@@ -76,6 +78,7 @@ data class VolumeConversionValues(
     val cubInch: Double,
     val cubFoot: Double,
 )
+
 //VOLUME CONVERSION FORMULA
 val VolumeConversionMap = mapOf(
     "Cubic Meter" to VolumeConversionValues(1.0, 1000000.0, 61023.7, 35.3147),
@@ -91,6 +94,7 @@ data class MassConversionValues(
     val ounce: Double,
     val pound: Double,
 )
+
 //MASS CONVERSION FORMULA
 val MassConversionMap = mapOf(
     "Kilogram" to MassConversionValues(1.0, 1000.0, 35.274, 2.205),
@@ -105,6 +109,7 @@ data class WeightConversionValues(
     val kilopond: Double,
     val poundForce: Double
 )
+
 //WEIGHT CONVERSION FORMULA
 val WeightConversionMap = mapOf(
     "Newton" to WeightConversionValues(1.0, 0.10197, 0.22481),
@@ -122,11 +127,36 @@ data class TimeConversionValues(
     val month: Double,
     val year: Double,
 )
+
 //TIME CONVERSION FORMULA
 val TimeConversionMap = mapOf(
-    "Second" to TimeConversionValues(1.0, 0.0166667, 0.000277778, 0.0000115741, 0.00000165344, 0.000000380517, 0.0000000316881),
-    "Minute" to TimeConversionValues(60.0, 1.0, 0.0166667, 0.000694444, 0.0000992063, 0.0000228311, 0.00000190133),
-    "Hour" to TimeConversionValues(3600.0, 60.0, 1.0, 0.0416667, 0.00595238, 0.00136895, 0.00011408),
+    "Second" to TimeConversionValues(
+        1.0,
+        0.0166667,
+        0.000277778,
+        0.0000115741,
+        0.00000165344,
+        0.000000380517,
+        0.0000000316881
+    ),
+    "Minute" to TimeConversionValues(
+        60.0,
+        1.0,
+        0.0166667,
+        0.000694444,
+        0.0000992063,
+        0.0000228311,
+        0.00000190133
+    ),
+    "Hour" to TimeConversionValues(
+        3600.0,
+        60.0,
+        1.0,
+        0.0416667,
+        0.00595238,
+        0.00136895,
+        0.00011408
+    ),
     "Day" to TimeConversionValues(86400.0, 1440.0, 24.0, 1.0, 0.142857, 0.0328767, 0.00273973),
     "Week" to TimeConversionValues(604800.0, 10080.0, 168.0, 7.0, 1.0, 0.229985, 0.0191781),
     "Month" to TimeConversionValues(2629800.0, 43830.0, 730.5, 30.4375, 4.34812, 1.0, 0.0833333),
@@ -139,6 +169,7 @@ data class ElectricCurrentConversionValues(
     val milliAmpere: Double,
     val microAmpere: Double,
 )
+
 //ELECTRIC CURRENT CONVERSION FORMULA
 val ElectricCurrentConversionMap = mapOf(
     "Ampere" to ElectricCurrentConversionValues(1.0, 1000.0, 1000000.0),
@@ -152,6 +183,7 @@ data class TemperatureConversionValues(
     val fahrenheit: (Double) -> Double,
     val kelvin: (Double) -> Double,
 )
+
 //TEMPERATURE CONVERSION FORMULA
 val TemperatureConversionMap = mapOf(
     "Celsius" to TemperatureConversionValues(
